@@ -18,7 +18,7 @@ router
     .post(asyncHandler(addBook)) // POST  http://localhost:8000/books
 
 router.route('/title/:title').get(asyncHandler(getBookByTitle))
-router.route('/auther/:auther').get(asyncHandler(getBookByAuther))
+router.route('/auther/:author').get(asyncHandler(getBookByAuther))
 router.route('/category/:category').get(asyncHandler(getBookByCategory))
 router.route('/isbn/:isbn').get(asyncHandler(getBookByISBN))
 

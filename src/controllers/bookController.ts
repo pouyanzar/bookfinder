@@ -102,13 +102,9 @@ export const updateBook: ExpressFunction = async (req, res) => {
     try {
         // console.log(String(Object.keys(req.body)[0]))
         // const newfield = await Book.findByIdAndUpdate(req.params.id, {[Object.keys(req.body)[0]]: Object.values(req.body)},()=>{
-        const newfield = await Book.findByIdAndUpdate(
-            req.params.id,
-            {
-                author: req.body.author,
-            },
-            () => {},
-        )
+        const newfield = await Book.findByIdAndUpdate(req.params.id, {
+            author: req.body.author,
+        })
 
         res.status(200).json({
             status: 'success',
