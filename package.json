@@ -13,9 +13,9 @@
         "build:watch": "tsc --watch",
         "build:run": "nodemon dist/server.js",
         "start:dev": "npm run build && cross-env NODE_ENV=development concurrently \"npm run build:watch\" \"npm run build:run\"",
-        "start:prod": "cross-env NODE_ENV=production node dist/server.js",
+        "start:prod": "cross-env NODE_ENV=production node dist/src/server.js",
         "start": "cross-env NODE_ENV=development node dist/server.js",
-        "prepare": "[[ $NODE_ENV != 'production']] && husky install || echo 'Skipping husky install in production env"
+        "prepare": "husky install"
     },
     "keywords": [],
     "author": "",
