@@ -64,7 +64,7 @@ const router = express.Router()
  *     tags:
  *      - Books
  *     description: get a book by title!
- *      parameters:
+ *     parameters:
  *        - in: path
  *          name: title
  *          required: true
@@ -85,7 +85,7 @@ const router = express.Router()
  *     tags:
  *      - Books
  *     description: get a book by author!
- *      parameters:
+ *     parameters:
  *      - in: path
  *        name: author
  *        required: true
@@ -106,7 +106,7 @@ const router = express.Router()
  *     tags:
  *      - Books
  *     description: get a book by category!
- *      parameters:
+ *     parameters:
  *      - in: path
  *        name: category
  *        required: true
@@ -127,7 +127,7 @@ const router = express.Router()
  *     tags:
  *      - Books
  *     description: get a book by isbn!
- *        parameters:
+ *     parameters:
  *          - in: path
  *            name: isbn
  *            required: true
@@ -140,6 +140,7 @@ const router = express.Router()
  *       404:
  *         description: book not found
  */
+
 /**
  * @openapi
  * /api/v1/books/update:
@@ -147,22 +148,11 @@ const router = express.Router()
  *     tags:
  *      - Books
  *     description: modify a book fields by id!
- *      parameters:
+ *     parameters:
  *      - in: path
  *        name: id
  *        required: true
- * /**
- * @openapi
- * /api/v1/books/author:
- *   get:
- *     tags:
- *      - Books
- *     description: get a book by author!
- *      parameters:
- *      - in: path
- *        name: author
- *        required: true
- *        description: The author of the book
+
  *        schema:
  *           type: string
  *     responses:
@@ -179,11 +169,11 @@ const router = express.Router()
  *     tags:
  *      - Books
  *     description: delete a book fields by id!
- *      parameters:
+ *     parameters:
  *      - in: path
  *        name: id
  *        required: true
- *      schema:
+ *     schema:
  *           type: string
  *     responses:
  *       200:
