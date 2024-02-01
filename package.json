@@ -1,5 +1,5 @@
 {
-    "name": "todo-backend",
+    "name": "bookfinder-backend",
     "version": "1.0.0",
     "description": "",
     "main": "server.ts",
@@ -22,6 +22,8 @@
     "license": "ISC",
     "dependencies": {
         "@types/node": "^20.11.14",
+        "@types/swagger-jsdoc": "^6.0.4",
+        "@types/swagger-ui-express": "^4.1.6",
         "concurrently": "^8.2.2",
         "cors": "^2.8.5",
         "cross-env": "^7.0.3",
