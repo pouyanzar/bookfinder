@@ -11,18 +11,19 @@ import {
     deleteBook,
 } from '../controllers/bookController'
 const router = express.Router()
+
 /**
  * @openapi
  * /api/v1/books:
  *   get:
  *     tags:
- *      - Books
- *     description: Gets all the books!
+ *       - Books
+ *     description: Get all books
  *     responses:
  *       200:
- *         description: Returns all the books
+ *         description: successfully queued all books
  *       400:
- *         description: Invalid data sent
+ *         description: Unable to get books
  */
 
 /**
@@ -30,9 +31,9 @@ const router = express.Router()
  * /api/v1/books:
  *   post:
  *     tags:
- *      - Books
- *     description: Creates a book!
- *      requestBody:
+ *       - Books
+ *     description: Create a new book
+ *     requestBody:
  *       required: true
  *       content:
  *         application/json:
@@ -64,12 +65,12 @@ const router = express.Router()
  *      - Books
  *     description: get a book by title!
  *      parameters:
- *      - in: path
- *        name: title
- *        required: true
- *        description: The title of the book
- *        schema:
- *           type: string
+ *        - in: path
+ *          name: title
+ *          required: true
+ *          description: The title of the book
+ *          schema:
+ *            type: string
  *     responses:
  *       200:
  *         description: book data retrieved successfully
@@ -126,13 +127,13 @@ const router = express.Router()
  *     tags:
  *      - Books
  *     description: get a book by isbn!
- *      parameters:
- *      - in: path
- *        name: isbn
- *        required: true
- *        description: The isbn of the book
- *        schema:
- *           type: string
+ *        parameters:
+ *          - in: path
+ *            name: isbn
+ *            required: true
+ *            description: The isbn of the book
+ *            schema:
+ *              type: string
  *     responses:
  *       200:
  *         description: book data retrieved successfully
