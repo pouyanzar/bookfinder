@@ -102,14 +102,37 @@ export const updateBook: ExpressFunction = async (req, res) => {
     try {
         // console.log(String(Object.keys(req.body)[0]))
         // const newfield = await Book.findByIdAndUpdate(req.params.id, {[Object.keys(req.body)[0]]: Object.values(req.body)},()=>{
-        const newfield = await Book.findByIdAndUpdate(req.params.id, {
+        console.log(req.body)
+        const newfield = await Book.findByIdAndUpdate(req.body.id, {
             author: req.body.author,
+            title: req.body.title,
+            ISBN: req.body.ISBN,
+            category: req.body.category,
         })
 
         res.status(200).json({
             status: 'success',
             data: {
                 book: newfield,
+            },
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: 'fail',
+            message: err,
+        })
+    }
+}
+export const deleteBook: ExpressFunction = async (req, res) => {
+    try {
+        // console.log(String(Object.keys(req.body)[0]))
+        // const newfield = await Book.findByIdAndUpdate(req.params.id, {[Object.keys(req.body)[0]]: Object.values(req.body)},()=>{
+        const book = await Book.findByIdAndDelete(req.body.id)
+
+        res.status(200).json({
+            status: 'success',
+            data: {
+                book,
             },
         })
     } catch (err) {

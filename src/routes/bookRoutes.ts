@@ -8,6 +8,7 @@ import {
     getBookByTitle,
     addBook,
     updateBook,
+    deleteBook,
 } from '../controllers/bookController'
 const router = express.Router()
 
@@ -22,6 +23,8 @@ router.route('/auther/:author').get(asyncHandler(getBookByAuther))
 router.route('/category/:category').get(asyncHandler(getBookByCategory))
 router.route('/isbn/:isbn').get(asyncHandler(getBookByISBN))
 
-router.route('/:id').patch(asyncHandler(updateBook))
+router.route('/update').patch(asyncHandler(updateBook))
+
+router.route('/delete').delete(asyncHandler(deleteBook))
 
 export default router
