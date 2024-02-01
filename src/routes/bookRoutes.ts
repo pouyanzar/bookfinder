@@ -21,6 +21,8 @@ const router = express.Router()
  *     responses:
  *       200:
  *         description: Returns all the books
+ *       400:
+ *         description: Invalid data sent
  */
 
 /**
@@ -29,16 +31,29 @@ const router = express.Router()
  *   post:
  *     tags:
  *      - Books
- *     description: Post a book!
- *      parameters:
- *      - in: path
- *        name: title
- *        name: author
- *        name: category
- *        name: isbn
+ *     description: Creates a book!
+ *      requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               author:
+ *                 type: string
+ *               category:
+ *                 type: string
+ *               isbn:
+ *                 type: string
+ *               completed:
+ *                 type: boolean
  *     responses:
- *       200:
- *         description: Returns the added book
+ *       201:
+ *         description: Book created successfully
+ *       400:
+ *         description: Invalid data sent
  */
 
 /**
@@ -51,9 +66,15 @@ const router = express.Router()
  *      parameters:
  *      - in: path
  *        name: title
+ *        required: true
+ *        description: The title of the book
+ *        schema:
+ *           type: string
  *     responses:
  *       200:
- *         description: Returns the book with the title
+ *         description: book data retrieved successfully
+ *       404:
+ *         description: book not found
  */
 
 /**
@@ -66,9 +87,15 @@ const router = express.Router()
  *      parameters:
  *      - in: path
  *        name: author
+ *        required: true
+ *        description: The author of the book
+ *        schema:
+ *           type: string
  *     responses:
  *       200:
- *         description: Returns the book with the author
+ *         description: book data retrieved successfully
+ *       404:
+ *         description: book not found
  */
 
 /**
@@ -81,9 +108,15 @@ const router = express.Router()
  *      parameters:
  *      - in: path
  *        name: category
+ *        required: true
+ *        description: The category of the book
+ *        schema:
+ *           type: string
  *     responses:
  *       200:
- *         description: Returns the book with the category
+ *         description: book data retrieved successfully
+ *       404:
+ *         description: book not found
  */
 
 /**
@@ -96,11 +129,16 @@ const router = express.Router()
  *      parameters:
  *      - in: path
  *        name: isbn
+ *        required: true
+ *        description: The isbn of the book
+ *        schema:
+ *           type: string
  *     responses:
  *       200:
- *         description: Returns the book with the isbn
+ *         description: book data retrieved successfully
+ *       404:
+ *         description: book not found
  */
-
 /**
  * @openapi
  * /api/v1/books/update:
@@ -112,9 +150,25 @@ const router = express.Router()
  *      - in: path
  *        name: id
  *        required: true
+ * /**
+ * @openapi
+ * /api/v1/books/author:
+ *   get:
+ *     tags:
+ *      - Books
+ *     description: get a book by author!
+ *      parameters:
+ *      - in: path
+ *        name: author
+ *        required: true
+ *        description: The author of the book
+ *        schema:
+ *           type: string
  *     responses:
  *       200:
  *         description: Returns the modfied book with updated fields
+ *       404:
+ *         description: book not found
  */
 
 /**
@@ -128,9 +182,13 @@ const router = express.Router()
  *      - in: path
  *        name: id
  *        required: true
+ *      schema:
+ *           type: string
  *     responses:
  *       200:
  *         description: Returns the deleted book
+ *       404:
+ *         description: book not found
  */
 
 // http://localhost:8000/books
@@ -139,7 +197,7 @@ router
     .get(asyncHandler(getAllBooks)) // GET  http://localhost:8000/books
     .post(asyncHandler(addBook)) // POST  http://localhost:8000/books
 
-router.route('/title').get(asyncHandler(getBookByTitle))
+router.route('/author').get(asyncHandler(getBookByTitle))
 router.route('/auther').get(asyncHandler(getBookByAuther))
 router.route('/category').get(asyncHandler(getBookByCategory))
 router.route('/isbn/').get(asyncHandler(getBookByISBN))
